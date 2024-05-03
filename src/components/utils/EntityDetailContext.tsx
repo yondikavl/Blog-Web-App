@@ -1,6 +1,9 @@
 import { UserType } from "@/components/Form/interface";
-import { createContext, useContext, useState } from "react";
-import { ReactNodeProps } from "../layout/interface";
+import { ReactNode, createContext, useContext, useState } from "react";
+
+interface ReactNodeProps {
+  children: ReactNode;
+}
 
 const EntityDetailContext = createContext<any>({});
 
