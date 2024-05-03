@@ -7,7 +7,7 @@ import { Rubik } from "next/font/google";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
-const blogs = () => {
+const Blogs = () => {
   const [data, setData] = useState<any[]>([]);
   const { query } = useRouter();
   const page = query.page;
@@ -36,4 +36,4 @@ const blogs = () => {
   );
 };
 
-export default blogs;
+export default Blogs;
