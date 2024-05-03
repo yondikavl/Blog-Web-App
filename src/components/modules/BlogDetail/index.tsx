@@ -60,10 +60,12 @@ const BlogDetails: React.FC<BlogDetailProps> = ({
             <div>
               {commentsData.map((item) => (
                 <div key={item.id} className="mt-4">
-                  <p className="font-bold text-lg flex items-center gap-2">
-                    <FaUserCircle />
-                    {item.name}{" "}
-                    <span className="text-slate-400 font-normal">
+                  <p className="font-bold text-lg flex flex-col gap-2">
+                    <span className="flex items-center gap-2">
+                      <FaUserCircle />
+                      {item.name}{" "}
+                    </span>
+                    <span className="text-slate-400 font-normal text-sm">
                       ({item.email})
                     </span>
                   </p>
