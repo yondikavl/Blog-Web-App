@@ -7,7 +7,7 @@ import { Rubik } from "next/font/google";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
-const modifyUserPage = () => {
+const ModifyUserPage = () => {
   const { query } = useRouter();
   const { selectedUser } = useEntityDetailHook();
   const type = query.slug === "create" ? "create" : "update";
@@ -25,4 +25,4 @@ const modifyUserPage = () => {
   );
 };
 
-export default modifyUserPage;
+export default ModifyUserPage;

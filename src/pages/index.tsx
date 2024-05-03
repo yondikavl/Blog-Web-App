@@ -4,7 +4,7 @@ import { Rubik } from "next/font/google";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
-const splash = () => {
+const SplashPage = () => {
   return (
     <main className={`${rubik.className}`}>
       <Splash />
@@ -12,4 +12,4 @@ const splash = () => {
   );
 };
 
-export default splash;
+export default SplashPage;
