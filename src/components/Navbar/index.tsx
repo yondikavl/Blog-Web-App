@@ -40,9 +40,9 @@ const Navbar = () => {
     >
       <div className="flex justify-between items-center mx-4 md:mx-48">
         <Link href="/">
-          <h1 className="font-bold md:text-2xl text-white flex items-center gap-4">
+          <h1 className="font-bold text-xl md:text-2xl text-white flex items-center gap-4">
             <FaQuoteRight className="fill-white" />
-            Synapsis Blog
+            Synap App
           </h1>
         </Link>
         <div>

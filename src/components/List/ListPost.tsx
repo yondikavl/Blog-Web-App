@@ -1,10 +1,19 @@
 import React from "react";
-import { TableDataProps } from "./interface";
 import { useRouter } from "next/router";
+import { useEntityDetailHook } from "@/components/utils";
 import { FaEye } from "react-icons/fa";
 
-const ListPost: React.FC<TableDataProps> = ({ data }) => {
+interface TableDataProps {
+  data: any[];
+}
+
+const ListPostComponent: React.FC<TableDataProps> = ({ data }) => {
   const { push, query } = useRouter();
+  const { setPostDetails } = useEntityDetailHook();
+  const handleClick = (item: any) => {
+    push(`/blogs/detail/${item.id}`);
+    setPostDetails(item);
+  };
 
   const currentPage = parseInt(query.page as string, 10) || 1;
 
@@ -13,8 +22,12 @@ const ListPost: React.FC<TableDataProps> = ({ data }) => {
   };
 
   return (
-    <div className="mx-4 md:mx-48 mt-16 md:mt-20">
-      <h2 className="text-5xl text-center py-20 font-bold">Blog Post List</h2>
+    <div className="mx-4 md:mx-48 mt-24 md:mt-24">
+      <div className="bg-blue-900 p-6 rounded-lg mb-4">
+        <h2 className="text-4xl md:text-9xl text-center py-20 font-bold text-blue-100">
+          Blog Post List
+        </h2>
+      </div>
 
       <div className="flex flex-wrap justify-around">
         {data.map((item) => (
@@ -29,7 +42,10 @@ const ListPost: React.FC<TableDataProps> = ({ data }) => {
                 <p className="text-slate-400">Post ID: {item.id}</p>
                 <p className="text-slate-400">User ID: {item.user_id}</p>
               </div>
-              <button className="bg-blue-800 text-white px-6 py-3 rounded-lg border-2 border-slate-400 hover:bg-blue-900 flex items-center gap-2">
+              <button
+                onClick={() => handleClick(item)}
+                className="bg-blue-800 text-white px-6 py-3 rounded-lg border-2 border-slate-400 hover:bg-blue-900 flex items-center gap-2"
+              >
                 <FaEye className="fill-white" />
                 Detail
               </button>
@@ -63,4 +79,4 @@ const ListPost: React.FC<TableDataProps> = ({ data }) => {
   );
 };
 
-export default ListPost;
+export default ListPostComponent;

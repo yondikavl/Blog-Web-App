@@ -1,11 +1,15 @@
+import Splash from "@/components/modules/Splash";
+import React from "react";
 import { Rubik } from "next/font/google";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
-export default function Home() {
+const splash = () => {
   return (
     <main className={`${rubik.className}`}>
-      <h1>Splash</h1>
+      <Splash />
     </main>
   );
-}
+};
+
+export default splash;

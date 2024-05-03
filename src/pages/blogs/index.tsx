@@ -1,8 +1,8 @@
-import ListPost from "@/components/elements/List/ListPost";
-import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import { getPost } from "../api";
+import { ListPostComponent } from "@/components/List";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import { Rubik } from "next/font/google";
 
 const rubik = Rubik({ subsets: ["latin"] });
@@ -27,14 +27,12 @@ const blogs = () => {
   }, [page]);
 
   return (
-    <>
+    <main className={`${rubik.className}`}>
       <Head>
         <title>Synap | Blogs</title>
       </Head>
-      <main className={`${rubik.className}`}>
-        <ListPost data={data} />
-      </main>
-    </>
+      <ListPostComponent data={data} />
+    </main>
   );
 };
 
