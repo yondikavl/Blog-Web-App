@@ -1,4 +1,4 @@
-import FormUser from "@/components/Form";
+import FormUserComponent from "@/components/Form";
 import { useEntityDetailHook } from "@/components/utils";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -17,7 +17,7 @@ const modifyUserPage = () => {
       <Head>
         <title>Synap | Users</title>
       </Head>
-      <FormUser
+      <FormUserComponent
         type={type}
         oldData={type === "create" ? undefined : selectedUser}
       />

@@ -21,6 +21,19 @@ const ListUserComponent: React.FC<TableDataProps> = ({ data }) => {
 
   const currentPage = parseInt(query.page as string, 10) || 1;
 
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchVal(e.target.value);
+  };
+
+  const handleCreate = () => {
+    push("/users/create");
+  };
+
+  const handleUpdate = (dataItem: UserType) => {
+    setSelectedUser(dataItem);
+    push("/users/update");
+  };
+
   const handleDelete = async (id: number) => {
     try {
       const result = await deleteUser(id);
@@ -41,17 +54,8 @@ const ListUserComponent: React.FC<TableDataProps> = ({ data }) => {
     }
   }, [deletedUserId, cloneData]);
 
-  const handleUpdate = (dataItem: UserType) => {
-    setSelectedUser(dataItem);
-    push("/users/update");
-  };
-
   const handlePageChange = (page: number) => {
     push({ pathname: "/users", query: { page } });
-  };
-
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchVal(e.target.value);
   };
 
   useEffect(() => {
@@ -70,7 +74,7 @@ const ListUserComponent: React.FC<TableDataProps> = ({ data }) => {
 
       <div className="flex justify-between pb-8">
         <button
-          onClick={() => push("/users/create")}
+          onClick={() => handleCreate()}
           className="bg-green-700 text-white px-3 md:px-6 md:py-3 rounded-lg border-2 border-slate-400 hover:bg-green-900 flex items-center gap-2"
         >
           <FaPlus className="fill-white" />
