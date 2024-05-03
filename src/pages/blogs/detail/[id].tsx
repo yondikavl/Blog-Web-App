@@ -8,7 +8,7 @@ import { Rubik } from "next/font/google";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
-const detailBlog = () => {
+const DetailBlog = () => {
   const { postDetails } = useEntityDetailHook();
   const [commentsData, setCommentsData] = useState([] as any[]);
   const [userData, setUserData] = useState({});
@@ -46,4 +46,4 @@ const detailBlog = () => {
   );
 };
 
-export default detailBlog;
+export default DetailBlog;
