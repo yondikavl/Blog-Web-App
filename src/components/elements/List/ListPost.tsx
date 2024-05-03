@@ -1,6 +1,7 @@
 import React from "react";
 import { TableDataProps } from "./interface";
 import { useRouter } from "next/router";
+import { FaEye } from "react-icons/fa";
 
 const ListPost: React.FC<TableDataProps> = ({ data }) => {
   const { push, query } = useRouter();
@@ -29,6 +30,7 @@ const ListPost: React.FC<TableDataProps> = ({ data }) => {
                 <p className="text-slate-400">User ID: {item.user_id}</p>
               </div>
               <button className="bg-blue-800 text-white px-6 py-3 rounded-lg border-2 border-slate-400 hover:bg-blue-900 flex items-center gap-2">
+                <FaEye className="fill-white" />
                 Detail
               </button>
             </div>
