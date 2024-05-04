@@ -22,7 +22,7 @@ const ListPostComponent: React.FC<TableDataProps> = ({ data }) => {
   };
 
   return (
-    <div className="mx-4 md:mx-48 mt-24 md:mt-24">
+    <div className="mx-4 md:mx-48 mt-28 md:mt-24">
       <div className="bg-blue-900 p-6 rounded-lg mb-4">
         <h2 className="text-4xl md:text-9xl text-center py-20 font-bold text-blue-100">
           Blog Post List
