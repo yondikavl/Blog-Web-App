@@ -19,7 +19,7 @@ const BlogDetails: React.FC<BlogDetailProps> = ({
   };
 
   return (
-    <div className="mx-4 md:mx-48 mt-24 md:mt-24 bg-slate-100 border-2 p-4 rounded-lg">
+    <div className="mx-4 md:mx-48 mt-28 md:mt-24 bg-slate-100 border-2 p-4 rounded-lg">
       <div>
         <button
           onClick={handleBack}

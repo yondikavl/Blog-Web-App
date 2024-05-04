@@ -78,7 +78,7 @@ const FormUserComponent: React.FC<FormUserProps> = ({ type, oldData }) => {
       <Head>
         <title>{`Synap | ${formattedType} User`}</title>
       </Head>
-      <div className="mx-4 md:mx-48 mt-24 md:mt-24 bg-slate-100 border-2 p-4 rounded-lg">
+      <div className="mx-4 md:mx-48 mt-28 md:mt-24 bg-slate-100 border-2 p-4 rounded-lg">
         <button
           onClick={handleBack}
           className="bg-blue-800 text-white px-6 py-3 rounded-lg border-2 border-slate-400 hover:bg-blue-900 flex items-center gap-2"
