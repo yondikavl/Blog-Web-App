@@ -3,7 +3,13 @@ import { useRouter } from "next/router";
 import { deleteUser } from "@/pages/api";
 import { UserType } from "../Form/interface";
 import { useEntityDetailHook } from "@/components/utils";
-import { FaTrash, FaEdit, FaPlus } from "react-icons/fa";
+import {
+  FaTrash,
+  FaEdit,
+  FaPlus,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
 
 interface TableDataProps {
   data: any[];
@@ -20,6 +26,7 @@ const ListUserComponent: React.FC<TableDataProps> = ({ data }) => {
   const { setSelectedUser } = useEntityDetailHook();
 
   const currentPage = parseInt(query.page as string, 10) || 1;
+  const totalPages = 10;
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchVal(e.target.value);
@@ -141,14 +148,30 @@ const ListUserComponent: React.FC<TableDataProps> = ({ data }) => {
       </div>
 
       <div className="flex justify-around my-8">
-        {Array(10)
+        {currentPage > 1 && (
+          <div
+            onClick={() => handlePageChange(currentPage - 1)}
+            className="bg-slate-200 w-8 h-8 text-center content-center rounded-lg cursor-pointer hover:bg-blue-900 hover:text-white"
+          >
+            <FaChevronLeft />
+          </div>
+        )}
+
+        {Array(totalPages)
           .fill(null)
           .map((_, i) => {
             const pageNumber = i + 1;
+            const isEllipsis =
+              totalPages > 5 &&
+              (pageNumber < currentPage - 1 || pageNumber > currentPage + 1);
             const isActive = pageNumber === currentPage;
             const buttonClass = `bg-slate-200 w-8 h-8 text-center content-center rounded-lg cursor-pointer hover:bg-blue-900 hover:text-white ${
               isActive ? "bg-slate-800 text-white" : ""
             }`;
+
+            if (isEllipsis) {
+              return null;
+            }
 
             return (
               <div
@@ -160,6 +183,15 @@ const ListUserComponent: React.FC<TableDataProps> = ({ data }) => {
               </div>
             );
           })}
+
+        {currentPage < totalPages && (
+          <div
+            onClick={() => handlePageChange(currentPage + 1)}
+            className="bg-slate-200 w-8 h-8 text-center content-center rounded-lg cursor-pointer hover:bg-blue-900 hover:text-white"
+          >
+            <FaChevronRight />
+          </div>
+        )}
       </div>
     </div>
   );

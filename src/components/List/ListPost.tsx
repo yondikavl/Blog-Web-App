@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import { useEntityDetailHook } from "@/components/utils";
 import { FaEye, FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -15,29 +15,12 @@ const ListPostComponent: React.FC<TableDataProps> = ({ data }) => {
     setPostDetails(item);
   };
 
-  const [scrollPosition, setScrollPosition] = useState(0);
-
   const currentPage = parseInt(query.page as string, 10) || 1;
   const totalPages = 10;
 
   const handlePageChange = (page: number) => {
     push({ pathname: "/blogs", query: { page } });
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    window.scrollTo({ top: scrollPosition, behavior: "auto" });
-  }, [currentPage]);
 
   return (
     <div className="mx-4 md:mx-48 mt-28 md:mt-24">
@@ -72,7 +55,7 @@ const ListPostComponent: React.FC<TableDataProps> = ({ data }) => {
         ))}
       </div>
 
-      <div className="flex justify-around my-8" id="pagination">
+      <div className="flex justify-around my-8">
         {currentPage > 1 && (
           <div
             onClick={() => handlePageChange(currentPage - 1)}
