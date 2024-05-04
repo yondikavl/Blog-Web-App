@@ -4,11 +4,7 @@ import { useEntityDetailHook } from "@/components/utils";
 import { FaEye, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Hero from "../Hero";
 
-interface TableDataProps {
-  data: any[];
-}
-
-const ListPostComponent: React.FC<TableDataProps> = ({ data }) => {
+const ListPostComponent = ({ data }: { data: any }) => {
   const { push, query } = useRouter();
   const { setPostDetails } = useEntityDetailHook();
   const handleClick = (item: any) => {
@@ -25,10 +21,10 @@ const ListPostComponent: React.FC<TableDataProps> = ({ data }) => {
 
   return (
     <div className="mx-4 mt-28 md:mx-48 md:mt-24">
-      <Hero data={"Blog Post List"} />
+      <Hero pageName={"Blog Post List"} />
 
       <div className="flex flex-wrap justify-around">
-        {data.map((item) => (
+        {data.map((item: any) => (
           <div
             key={item.id}
             className="mb-4 w-screen rounded-lg border-2 bg-slate-100 p-8"

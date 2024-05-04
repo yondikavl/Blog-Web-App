@@ -12,11 +12,7 @@ import {
 } from "react-icons/fa";
 import Hero from "../Hero";
 
-interface TableDataProps {
-  data: any[];
-}
-
-const ListUserComponent: React.FC<TableDataProps> = ({ data }) => {
+const ListUserComponent = ({ data }: { data: any }) => {
   const [cloneData, setCloneData] = useState(data.slice());
   const [searchVal, setSearchVal] = useState("");
   const [deletedUserId, setDeletedUserId] = useState<number | null>(null);
@@ -56,7 +52,9 @@ const ListUserComponent: React.FC<TableDataProps> = ({ data }) => {
 
   useEffect(() => {
     if (deletedUserId !== null) {
-      const updatedData = cloneData.filter((item) => item.id !== deletedUserId);
+      const updatedData = cloneData.filter(
+        (item: any) => item.id !== deletedUserId,
+      );
       setCloneData(updatedData);
       setDeletedUserId(null);
     }
@@ -70,13 +68,13 @@ const ListUserComponent: React.FC<TableDataProps> = ({ data }) => {
     setCloneData(
       data
         .slice()
-        .filter((item) => item.name.toLowerCase().includes(searchVal)),
+        .filter((item: any) => item.name.toLowerCase().includes(searchVal)),
     );
   }, [searchVal, data]);
 
   return (
     <div className="mx-4 mt-28 md:mx-48 md:mt-24">
-      <Hero data={"User List"} />
+      <Hero pageName={"User List"} />
 
       <div className="flex flex-col justify-between pb-8 md:flex-row">
         <button

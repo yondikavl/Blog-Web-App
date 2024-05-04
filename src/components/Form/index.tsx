@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { INIT_USER_DATA } from "./const";
 import { createUser, updateUser } from "@/pages/api";
 import { useRouter } from "next/router";
 import { FormUserProps, NewUserType, UserType } from "./interface";
@@ -8,6 +7,12 @@ import { FaArrowLeft, FaSave } from "react-icons/fa";
 import Head from "next/head";
 
 const FormUserComponent: React.FC<FormUserProps> = ({ type, oldData }) => {
+  const INIT_USER_DATA: NewUserType = {
+    name: "",
+    email: "",
+    status: "",
+    gender: "",
+  };
   const [data, setData] = useState<NewUserType | UserType>(
     oldData ? oldData : INIT_USER_DATA,
   );

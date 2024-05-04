@@ -4,13 +4,11 @@ import { FaArrowLeft, FaCommentAlt, FaUserCircle } from "react-icons/fa";
 
 export interface BlogDetailProps {
   commentsData: any[];
-  userData: any;
   postDetails: any;
 }
 
 const BlogDetails: React.FC<BlogDetailProps> = ({
   commentsData,
-  userData,
   postDetails,
 }) => {
   const router = useRouter();

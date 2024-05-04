@@ -1,8 +1,3 @@
-export interface FormUserProps {
-  type: "create" | "update";
-  oldData?: UserType;
-}
-
 export interface NewUserType {
   name: string;
   email: string;
@@ -12,4 +7,9 @@ export interface NewUserType {
 
 export interface UserType extends NewUserType {
   id: number;
+}
+
+export interface FormUserProps {
+  type: "create" | "update";
+  oldData?: UserType;
 }
