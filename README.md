@@ -13,16 +13,26 @@ This [Next.js](https://nextjs.org/) project was created as part of a challenge t
 
 ## How to Run Project
 
-First, run the development server:
+First, install axios to fetch data request:
+
+```bash
+npm install axios
+# or
+yarn add axios
+```
+
+Second, install font-awesome icon:
+
+```bash
+npm install react-icons --save
+```
+
+Third, run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```
