@@ -1,4 +1,4 @@
-import Splash from "@/components/modules/Splash";
+import Splash from "@/components/Splash";
 import React from "react";
 import { Rubik } from "next/font/google";
 

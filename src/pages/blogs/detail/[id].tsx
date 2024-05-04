@@ -1,4 +1,4 @@
-import BlogDetails from "@/components/modules/BlogDetail";
+import BlogDetails from "@/components/BlogDetail";
 import { useEntityDetailHook } from "@/components/utils";
 import { getPostComments, getPostUser } from "@/pages/api";
 import Head from "next/head";
