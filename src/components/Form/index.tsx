@@ -21,55 +21,51 @@ const FormUserComponent: React.FC<FormUserProps> = ({ type, oldData }) => {
   const formattedType = type.charAt(0).toUpperCase() + type.slice(1);
   formattedType === "Create" && setSelectedUser(null);
 
-  const handleChange = (e: any) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     const { name, value } = e.target;
     setData((prev: UserType | NewUserType) => ({ ...prev, [name]: value }));
   };
 
-  const areObjectsEqual = (objA: any, objB: any): boolean => {
-    const keysA = Object.keys(objA);
-    const keysB = Object.keys(objB);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const isCreateType = formattedType === "Create";
 
-    if (keysA.length !== keysB.length) {
-      return false;
+    if (isCreateType) {
+      const result = await createUser(data);
+      const successMessage = "User created successfully!";
+      const failMessage = "Failed to create user. Please try again.";
+
+      handleApiResponse(result, successMessage, failMessage);
     }
 
-    for (let key of keysA) {
-      if (objA[key] !== objB[key]) {
-        return false;
-      }
-    }
+    if (!isCreateType) {
+      const noChangesMessage = "No changes were made.";
+      const result = await updateUser(data, oldData!.id);
+      const successMessage = "User information updated successfully!";
+      const failMessage =
+        "Failed to update user information. Please try again.";
 
-    return true;
+      handleApiResponse(result, successMessage, failMessage, noChangesMessage);
+    }
   };
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    if (formattedType === "Create") {
-      const result = await createUser(data);
-      if (result?.status === 201) {
-        push({ pathname: "/users", query: { page: 1 } });
-        setData(INIT_USER_DATA);
-        return alert("User created successfully!");
-      } else {
-        alert("Failed to create user. Please try again.");
-      }
-    }
-
-    if (formattedType === "Update") {
-      if (areObjectsEqual(oldData, data)) {
-        return alert("No changes were made.");
-      }
-
-      const result = await updateUser(data, oldData!.id);
-      if (result?.status === 200) {
-        push({ pathname: "/users", query: { page: 1 } });
-        setData(INIT_USER_DATA);
-        setSelectedUser(null);
-        return alert("User information updated successfully!");
-      } else {
-        alert("Failed to update user information. Please try again.");
-      }
+  const handleApiResponse = (
+    result: any,
+    successMessage: string,
+    failMessage: string,
+    noChangesMessage?: string,
+  ) => {
+    if (result?.status === 201 || result?.status === 200) {
+      push({ pathname: "/users", query: { page: 1 } });
+      setData(INIT_USER_DATA);
+      setSelectedUser(null);
+      alert(successMessage);
+    } else if (result?.status !== 200 && noChangesMessage) {
+      alert(noChangesMessage);
+    } else {
+      alert(failMessage);
     }
   };
 
