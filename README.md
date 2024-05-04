@@ -4,7 +4,14 @@
 
 This [Next.js](https://nextjs.org/) project was created as part of a challenge test for the recruitment stage as a Front End Developer Intern at PT Synapsis Sinergi Digital.
 
-## Getting Started
+## Features
+
+1. public api from https://gorest.co.in/ to generate a blog post.
+2. Blog post list
+3. Blog post detail with comment and user
+4. Users page with Create, Read, Update, Delete and Search users
+
+## How to Run Project
 
 First, run the development server:
 
