@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useEntityDetailHook } from "@/components/utils";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 interface TableDataProps {
   data: any[];
@@ -15,11 +15,29 @@ const ListPostComponent: React.FC<TableDataProps> = ({ data }) => {
     setPostDetails(item);
   };
 
+  const [scrollPosition, setScrollPosition] = useState(0);
+
   const currentPage = parseInt(query.page as string, 10) || 1;
+  const totalPages = 10;
 
   const handlePageChange = (page: number) => {
     push({ pathname: "/blogs", query: { page } });
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: scrollPosition, behavior: "auto" });
+  }, [currentPage]);
 
   return (
     <div className="mx-4 md:mx-48 mt-28 md:mt-24">
@@ -54,15 +72,31 @@ const ListPostComponent: React.FC<TableDataProps> = ({ data }) => {
         ))}
       </div>
 
-      <div className="flex justify-around my-8">
-        {Array(10)
+      <div className="flex justify-around my-8" id="pagination">
+        {currentPage > 1 && (
+          <div
+            onClick={() => handlePageChange(currentPage - 1)}
+            className="bg-slate-200 w-8 h-8 text-center content-center rounded-lg cursor-pointer hover:bg-blue-900 hover:text-white"
+          >
+            <FaChevronLeft />
+          </div>
+        )}
+
+        {Array(totalPages)
           .fill(null)
           .map((_, i) => {
             const pageNumber = i + 1;
+            const isEllipsis =
+              totalPages > 5 &&
+              (pageNumber < currentPage - 1 || pageNumber > currentPage + 1);
             const isActive = pageNumber === currentPage;
             const buttonClass = `bg-slate-200 w-8 h-8 text-center content-center rounded-lg cursor-pointer hover:bg-blue-900 hover:text-white ${
               isActive ? "bg-slate-800 text-white" : ""
             }`;
+
+            if (isEllipsis) {
+              return null;
+            }
 
             return (
               <div
@@ -74,6 +108,15 @@ const ListPostComponent: React.FC<TableDataProps> = ({ data }) => {
               </div>
             );
           })}
+
+        {currentPage < totalPages && (
+          <div
+            onClick={() => handlePageChange(currentPage + 1)}
+            className="bg-slate-200 w-8 h-8 text-center content-center rounded-lg cursor-pointer hover:bg-blue-900 hover:text-white"
+          >
+            <FaChevronRight />
+          </div>
+        )}
       </div>
     </div>
   );
