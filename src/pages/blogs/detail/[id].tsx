@@ -28,7 +28,7 @@ const DetailBlog = () => {
     };
 
     fetchPostDetails();
-  }, [id]);
+  }, [id, postDetails?.user_id]);
 
   const props = {
     commentsData,

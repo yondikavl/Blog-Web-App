@@ -16,7 +16,7 @@ const ListUserComponent: React.FC<TableDataProps> = ({ data }) => {
   const router = useRouter();
   const { push, query } = router;
   const USER_COLUMNS = ["id", "name", "email", "gender", "status"];
-  const header = useMemo(() => USER_COLUMNS, []);
+  const header = useMemo(() => USER_COLUMNS, [USER_COLUMNS]);
   const { setSelectedUser } = useEntityDetailHook();
 
   const currentPage = parseInt(query.page as string, 10) || 1;
