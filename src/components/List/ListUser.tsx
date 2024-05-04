@@ -10,6 +10,7 @@ import {
   FaChevronLeft,
   FaChevronRight,
 } from "react-icons/fa";
+import Hero from "../Hero";
 
 interface TableDataProps {
   data: any[];
@@ -73,11 +74,7 @@ const ListUserComponent: React.FC<TableDataProps> = ({ data }) => {
 
   return (
     <div className="mx-4 md:mx-48 mt-28 md:mt-24">
-      <div className="bg-blue-900 p-6 rounded-lg mb-4">
-        <h2 className="text-4xl md:text-9xl text-center py-20 font-bold text-blue-100">
-          User List
-        </h2>
-      </div>
+      <Hero data={"User List"} />
 
       <div className="flex justify-between pb-8 flex-col md:flex-row">
         <button
