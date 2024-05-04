@@ -19,11 +19,11 @@ const BlogDetails: React.FC<BlogDetailProps> = ({
   };
 
   return (
-    <div className="mx-4 md:mx-48 mt-28 md:mt-24 bg-slate-100 border-2 p-4 rounded-lg">
+    <div className="mx-4 mt-28 rounded-lg border-2 bg-slate-100 p-4 md:mx-48 md:mt-24">
       <div>
         <button
           onClick={handleBack}
-          className="bg-blue-800 text-white px-6 py-3 rounded-lg border-2 border-slate-400 hover:bg-blue-900 flex items-center gap-2"
+          className="flex items-center gap-2 rounded-lg border-2 border-slate-400 bg-blue-800 px-6 py-3 text-white hover:bg-blue-900"
         >
           <FaArrowLeft className="fill-white" />
           Back
@@ -51,21 +51,21 @@ const BlogDetails: React.FC<BlogDetailProps> = ({
           </div>
         </div>
 
-        <h5 className="text-xl font-bold mb-2 flex items-center gap-2">
+        <h5 className="mb-2 flex items-center gap-2 text-xl font-bold">
           <FaCommentAlt />
           Comment
         </h5>
-        <div className="bg-slate-100 border-2 p-4 rounded-lg">
+        <div className="rounded-lg border-2 bg-slate-100 p-4">
           {commentsData?.length ? (
             <div>
               {commentsData.map((item) => (
                 <div key={item.id} className="mt-4">
-                  <p className="font-bold text-lg flex flex-col gap-2">
+                  <p className="flex flex-col gap-2 text-lg font-bold">
                     <span className="flex items-center gap-2">
                       <FaUserCircle />
                       {item.name}{" "}
                     </span>
-                    <span className="text-slate-400 font-normal text-sm">
+                    <span className="text-sm font-normal text-slate-400">
                       ({item.email})
                     </span>
                   </p>

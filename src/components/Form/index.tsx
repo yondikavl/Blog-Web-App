@@ -9,7 +9,7 @@ import Head from "next/head";
 
 const FormUserComponent: React.FC<FormUserProps> = ({ type, oldData }) => {
   const [data, setData] = useState<NewUserType | UserType>(
-    oldData ? oldData : INIT_USER_DATA
+    oldData ? oldData : INIT_USER_DATA,
   );
   const { setSelectedUser } = useEntityDetailHook();
   const { push, back } = useRouter();
@@ -78,10 +78,10 @@ const FormUserComponent: React.FC<FormUserProps> = ({ type, oldData }) => {
       <Head>
         <title>{`Synap | ${formattedType} User`}</title>
       </Head>
-      <div className="mx-4 md:mx-48 mt-28 md:mt-24 bg-slate-100 border-2 p-4 rounded-lg">
+      <div className="mx-4 mt-28 rounded-lg border-2 bg-slate-100 p-4 md:mx-48 md:mt-24">
         <button
           onClick={handleBack}
-          className="bg-blue-800 text-white px-6 py-3 rounded-lg border-2 border-slate-400 hover:bg-blue-900 flex items-center gap-2"
+          className="flex items-center gap-2 rounded-lg border-2 border-slate-400 bg-blue-800 px-6 py-3 text-white hover:bg-blue-900"
         >
           <FaArrowLeft className="fill-white" />
           Back
@@ -89,12 +89,12 @@ const FormUserComponent: React.FC<FormUserProps> = ({ type, oldData }) => {
 
         <form onSubmit={handleSubmit}>
           <div>
-            <h3 className="text-2xl font-bold my-4">
+            <h3 className="my-4 text-2xl font-bold">
               {formattedType} User Form
             </h3>
 
             <div className="flex flex-col gap-2">
-              <div className="flex gap-4 items-center">
+              <div className="flex items-center gap-4">
                 <label className="w-24">Name</label>
                 <input
                   required
@@ -102,11 +102,11 @@ const FormUserComponent: React.FC<FormUserProps> = ({ type, oldData }) => {
                   name="name"
                   value={data.name}
                   onChange={handleChange}
-                  className="border-2 px-6 py-3 rounded-lg w-full"
+                  className="w-full rounded-lg border-2 px-6 py-3"
                 />
               </div>
 
-              <div className="flex gap-4 items-center">
+              <div className="flex items-center gap-4">
                 <label className="w-24">Email address</label>
                 <input
                   required
@@ -114,11 +114,11 @@ const FormUserComponent: React.FC<FormUserProps> = ({ type, oldData }) => {
                   name="email"
                   value={data.email}
                   onChange={handleChange}
-                  className="border-2 px-6 py-3 rounded-lg w-full"
+                  className="w-full rounded-lg border-2 px-6 py-3"
                 />
               </div>
 
-              <div className="flex gap-4 items-center">
+              <div className="flex items-center gap-4">
                 <label htmlFor="gender" className="w-24">
                   Gender
                 </label>
@@ -128,7 +128,7 @@ const FormUserComponent: React.FC<FormUserProps> = ({ type, oldData }) => {
                   value={data.gender}
                   onChange={handleChange}
                   required
-                  className="border-2 px-6 py-3 rounded-lg w-full focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full rounded-lg border-2 px-6 py-3 focus:border-indigo-500 focus:ring-indigo-500"
                 >
                   <option value="" disabled>
                     Select gender
@@ -138,7 +138,7 @@ const FormUserComponent: React.FC<FormUserProps> = ({ type, oldData }) => {
                 </select>
               </div>
 
-              <div className="flex gap-4 items-center">
+              <div className="flex items-center gap-4">
                 <label htmlFor="status" className="w-24">
                   Status
                 </label>
@@ -148,7 +148,7 @@ const FormUserComponent: React.FC<FormUserProps> = ({ type, oldData }) => {
                   value={data.status}
                   onChange={handleChange}
                   required
-                  className="border-2 px-6 py-3 rounded-lg w-full focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full rounded-lg border-2 px-6 py-3 focus:border-indigo-500 focus:ring-indigo-500"
                 >
                   <option value="" disabled>
                     Select status
@@ -161,7 +161,7 @@ const FormUserComponent: React.FC<FormUserProps> = ({ type, oldData }) => {
             <div className="flex justify-end">
               <button
                 type="submit"
-                className="bg-green-700 text-white px-6 py-3 rounded-lg border-2 border-slate-400 hover:bg-green-900 flex items-center gap-2 mt-12"
+                className="mt-12 flex items-center gap-2 rounded-lg border-2 border-slate-400 bg-green-700 px-6 py-3 text-white hover:bg-green-900"
               >
                 <FaSave className="fill-white" />
                 Save

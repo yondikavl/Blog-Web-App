@@ -36,11 +36,11 @@ const Navbar = () => {
 
   return (
     <div
-      className={`bg-blue-800 py-5 md:py-6 fixed top-0 w-full z-50 ${rubik.className}`}
+      className={`fixed top-0 z-50 w-full bg-blue-800 py-5 md:py-6 ${rubik.className}`}
     >
-      <div className="flex justify-between items-center mx-4 md:mx-48">
+      <div className="mx-4 flex items-center justify-between md:mx-48">
         <Link href="/">
-          <h1 className="font-bold text-xl md:text-2xl text-white flex items-center gap-4">
+          <h1 className="flex items-center gap-4 text-xl font-bold text-white md:text-2xl">
             <FaQuoteRight className="fill-white" />
             Synap App
           </h1>

@@ -14,8 +14,8 @@ const Splash = () => {
   }, []);
 
   return (
-    <div className="bg-blue-800 h-screen flex justify-center items-center">
-      <h1 className="flex justify-center items-center font-bold text-white text-2xl gap-4">
+    <div className="flex h-screen items-center justify-center bg-blue-800">
+      <h1 className="flex items-center justify-center gap-4 text-2xl font-bold text-white">
         <FaQuoteRight className="fill-white" />
         Synap App
       </h1>

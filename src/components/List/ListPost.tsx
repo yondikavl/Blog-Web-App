@@ -24,25 +24,25 @@ const ListPostComponent: React.FC<TableDataProps> = ({ data }) => {
   };
 
   return (
-    <div className="mx-4 md:mx-48 mt-28 md:mt-24">
+    <div className="mx-4 mt-28 md:mx-48 md:mt-24">
       <Hero data={"Blog Post List"} />
 
       <div className="flex flex-wrap justify-around">
         {data.map((item) => (
           <div
             key={item.id}
-            className="bg-slate-100 w-screen p-8 rounded-lg mb-4 border-2"
+            className="mb-4 w-screen rounded-lg border-2 bg-slate-100 p-8"
           >
-            <h3 className="font-bold text-xl">{item.title}</h3>
-            <p className="line-clamp-3 text-justify my-4">{item.body}</p>
-            <div className="flex justify-between items-center pt-4">
+            <h3 className="text-xl font-bold">{item.title}</h3>
+            <p className="my-4 line-clamp-3 text-justify">{item.body}</p>
+            <div className="flex items-center justify-between pt-4">
               <div>
                 <p className="text-slate-400">Post ID: {item.id}</p>
                 <p className="text-slate-400">User ID: {item.user_id}</p>
               </div>
               <button
                 onClick={() => handleClick(item)}
-                className="bg-blue-800 text-white px-6 py-3 rounded-lg border-2 border-slate-400 hover:bg-blue-900 flex items-center gap-2"
+                className="flex items-center gap-2 rounded-lg border-2 border-slate-400 bg-blue-800 px-6 py-3 text-white hover:bg-blue-900"
               >
                 <FaEye className="fill-white" />
                 Detail
@@ -52,11 +52,11 @@ const ListPostComponent: React.FC<TableDataProps> = ({ data }) => {
         ))}
       </div>
 
-      <div className="flex justify-around my-8">
+      <div className="my-8 flex justify-around">
         {currentPage > 1 && (
           <div
             onClick={() => handlePageChange(currentPage - 1)}
-            className="bg-slate-200 w-8 h-8 flex items-center justify-center text-center content-center rounded-lg cursor-pointer hover:bg-blue-900 hover:text-white"
+            className="flex h-8 w-8 cursor-pointer content-center items-center justify-center rounded-lg bg-slate-200 text-center hover:bg-blue-900 hover:text-white"
           >
             <FaChevronLeft />
           </div>
@@ -92,7 +92,7 @@ const ListPostComponent: React.FC<TableDataProps> = ({ data }) => {
         {currentPage < totalPages && (
           <div
             onClick={() => handlePageChange(currentPage + 1)}
-            className="bg-slate-200 w-8 h-8 flex items-center justify-center text-center content-center rounded-lg cursor-pointer hover:bg-blue-900 hover:text-white"
+            className="flex h-8 w-8 cursor-pointer content-center items-center justify-center rounded-lg bg-slate-200 text-center hover:bg-blue-900 hover:text-white"
           >
             <FaChevronRight />
           </div>

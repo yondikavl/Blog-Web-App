@@ -68,38 +68,40 @@ const ListUserComponent: React.FC<TableDataProps> = ({ data }) => {
 
   useEffect(() => {
     setCloneData(
-      data.slice().filter((item) => item.name.toLowerCase().includes(searchVal))
+      data
+        .slice()
+        .filter((item) => item.name.toLowerCase().includes(searchVal)),
     );
   }, [searchVal, data]);
 
   return (
-    <div className="mx-4 md:mx-48 mt-28 md:mt-24">
+    <div className="mx-4 mt-28 md:mx-48 md:mt-24">
       <Hero data={"User List"} />
 
-      <div className="flex justify-between pb-8 flex-col md:flex-row">
+      <div className="flex flex-col justify-between pb-8 md:flex-row">
         <button
           onClick={() => handleCreate()}
-          className="bg-green-700 text-white px-3 md:px-6 py-3 md:py-3 rounded-lg border-2 border-slate-400 hover:bg-green-900 flex items-center gap-2 mb-4 md:mb-0"
+          className="mb-4 flex items-center gap-2 rounded-lg border-2 border-slate-400 bg-green-700 px-3 py-3 text-white hover:bg-green-900 md:mb-0 md:px-6 md:py-3"
         >
           <FaPlus className="fill-white" />
           Create User
         </button>
         <div>
-          <div className="flex gap-4 md:items-center flex-col md:flex-row">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center">
             <span>Search</span>
             <input
               type="text"
               onChange={handleSearch}
               placeholder="Search name"
               value={searchVal}
-              className="border-2 px-4 py-2 rounded-lg"
+              className="rounded-lg border-2 px-4 py-2"
             />
           </div>
         </div>
       </div>
 
-      <div className="bg-slate-100 p-4 rounded-lg mb-4 border-2 overflow-x-scroll">
-        <table className="border-2 w-full">
+      <div className="mb-4 overflow-x-scroll rounded-lg border-2 bg-slate-100 p-4">
+        <table className="w-full border-2">
           <thead className="border-2 bg-slate-300">
             <tr>
               {header.map((item) => (
@@ -121,17 +123,17 @@ const ListUserComponent: React.FC<TableDataProps> = ({ data }) => {
                   );
                 })}
                 <td className="py-2">
-                  <div className="flex gap-2 justify-center">
+                  <div className="flex justify-center gap-2">
                     <button
                       onClick={() => handleDelete(dataItem.id)}
-                      className="bg-red-700 text-white px-4 py-2 rounded-lg border-2 border-slate-400 hover:bg-red-900"
+                      className="rounded-lg border-2 border-slate-400 bg-red-700 px-4 py-2 text-white hover:bg-red-900"
                     >
                       <FaTrash fill="white" />
                       Delete
                     </button>
                     <button
                       onClick={() => handleUpdate(dataItem)}
-                      className="bg-yellow-600 text-white px-4 py-2 rounded-lg border-2 border-slate-400 hover:bg-yellow-900"
+                      className="rounded-lg border-2 border-slate-400 bg-yellow-600 px-4 py-2 text-white hover:bg-yellow-900"
                     >
                       <FaEdit fill="white" />
                       Update
@@ -144,11 +146,11 @@ const ListUserComponent: React.FC<TableDataProps> = ({ data }) => {
         </table>
       </div>
 
-      <div className="flex justify-around my-8">
+      <div className="my-8 flex justify-around">
         {currentPage > 1 && (
           <div
             onClick={() => handlePageChange(currentPage - 1)}
-            className="bg-slate-200 w-8 h-8 flex items-center justify-center rounded-lg cursor-pointer hover:bg-blue-900 hover:text-white"
+            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg bg-slate-200 hover:bg-blue-900 hover:text-white"
           >
             <FaChevronLeft />
           </div>
@@ -184,7 +186,7 @@ const ListUserComponent: React.FC<TableDataProps> = ({ data }) => {
         {currentPage < totalPages && (
           <div
             onClick={() => handlePageChange(currentPage + 1)}
-            className="bg-slate-200 w-8 h-8 flex items-center justify-center text-center content-center rounded-lg cursor-pointer hover:bg-blue-900 hover:text-white"
+            className="flex h-8 w-8 cursor-pointer content-center items-center justify-center rounded-lg bg-slate-200 text-center hover:bg-blue-900 hover:text-white"
           >
             <FaChevronRight />
           </div>

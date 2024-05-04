@@ -6,9 +6,9 @@ const rubik = Rubik({ subsets: ["latin"] });
 const Footer = () => {
   return (
     <main className={`${rubik.className}`}>
-      <div className="bg-blue-800 h-40 mt-20 flex flex-col items-center justify-center">
-        <h1 className="text-white text-2xl font-bold">Synap App</h1>
-        <p className="text-white mt-4">Develop by Yondika Vio Landa</p>
+      <div className="mt-20 flex h-40 flex-col items-center justify-center bg-blue-800">
+        <h1 className="text-2xl font-bold text-white">Synap App</h1>
+        <p className="mt-4 text-white">Develop by Yondika Vio Landa</p>
       </div>
     </main>
   );

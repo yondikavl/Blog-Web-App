@@ -6,8 +6,8 @@ interface TableDataProps {
 
 const Hero: React.FC<TableDataProps> = ({ data }) => {
   return (
-    <div className="bg-blue-900 bg-gradient-to-br from-blue-500 to-blue-900 p-6 rounded-lg mb-4">
-      <h2 className="text-4xl md:text-9xl text-center py-20 font-bold text-blue-100">
+    <div className="mb-4 rounded-lg bg-blue-900 bg-gradient-to-br from-blue-500 to-blue-900 p-6">
+      <h2 className="py-20 text-center text-4xl font-bold text-blue-100 md:text-9xl">
         {data}
       </h2>
     </div>
