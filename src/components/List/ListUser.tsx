@@ -72,10 +72,10 @@ const ListUserComponent: React.FC<TableDataProps> = ({ data }) => {
         </h2>
       </div>
 
-      <div className="flex justify-between pb-8">
+      <div className="flex justify-between pb-8 flex-col md:flex-row">
         <button
           onClick={() => handleCreate()}
-          className="bg-green-700 text-white px-3 md:px-6 md:py-3 rounded-lg border-2 border-slate-400 hover:bg-green-900 flex items-center gap-2"
+          className="bg-green-700 text-white px-3 md:px-6 py-3 md:py-3 rounded-lg border-2 border-slate-400 hover:bg-green-900 flex items-center gap-2 mb-4 md:mb-0"
         >
           <FaPlus className="fill-white" />
           Create User
