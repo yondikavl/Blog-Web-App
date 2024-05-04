@@ -59,7 +59,7 @@ const ListPostComponent: React.FC<TableDataProps> = ({ data }) => {
         {currentPage > 1 && (
           <div
             onClick={() => handlePageChange(currentPage - 1)}
-            className="bg-slate-200 w-8 h-8 text-center content-center rounded-lg cursor-pointer hover:bg-blue-900 hover:text-white"
+            className="bg-slate-200 w-8 h-8 flex items-center justify-center text-center content-center rounded-lg cursor-pointer hover:bg-blue-900 hover:text-white"
           >
             <FaChevronLeft />
           </div>
@@ -73,7 +73,7 @@ const ListPostComponent: React.FC<TableDataProps> = ({ data }) => {
               totalPages > 5 &&
               (pageNumber < currentPage - 1 || pageNumber > currentPage + 1);
             const isActive = pageNumber === currentPage;
-            const buttonClass = `bg-slate-200 w-8 h-8 text-center content-center rounded-lg cursor-pointer hover:bg-blue-900 hover:text-white ${
+            const buttonClass = `bg-slate-200 w-8 h-8 flex items-center justify-center rounded-lg cursor-pointer hover:bg-blue-900 hover:text-white ${
               isActive ? "bg-slate-800 text-white" : ""
             }`;
 
@@ -95,7 +95,7 @@ const ListPostComponent: React.FC<TableDataProps> = ({ data }) => {
         {currentPage < totalPages && (
           <div
             onClick={() => handlePageChange(currentPage + 1)}
-            className="bg-slate-200 w-8 h-8 text-center content-center rounded-lg cursor-pointer hover:bg-blue-900 hover:text-white"
+            className="bg-slate-200 w-8 h-8 flex items-center justify-center text-center content-center rounded-lg cursor-pointer hover:bg-blue-900 hover:text-white"
           >
             <FaChevronRight />
           </div>
