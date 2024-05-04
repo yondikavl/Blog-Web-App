@@ -1,3 +1,5 @@
+# Synap App
+
 ![alt text](./public/synapp-app-preview.png)
 
 This [Next.js](https://nextjs.org/) project was created as part of a challenge test for the recruitment stage as a Front End Developer Intern at PT Synapsis Sinergi Digital.
