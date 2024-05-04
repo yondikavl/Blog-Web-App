@@ -36,7 +36,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`bg-blue-800 py-6 fixed top-0 w-full z-50 ${rubik.className}`}
+      className={`bg-blue-800 py-5 md:py-6 fixed top-0 w-full z-50 ${rubik.className}`}
     >
       <div className="flex justify-between items-center mx-4 md:mx-48">
         <Link href="/">
